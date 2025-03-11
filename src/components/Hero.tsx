@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 // Import moment-hijri for Islamic calendar support
 import momentHijri from "moment-hijri";
 import "moment/locale/ar-sa"; // Import Arabic locale for proper formatting
@@ -17,8 +17,10 @@ export default function Hero() {
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
   const [hijriInfo, setHijriInfo] = useState("");
-  const [nextPrayer, setNextPrayer] = useState(""); // For prayer countdown
+  // For prayer countdown (used in updateDateTime function)
+  const [prayerInfo, setPrayerInfo] = useState({ name: "", timeRemaining: "" });
   const [userLocation, setUserLocation] = useState<Coordinates | null>(null);
+  // Store location errors to display to user if needed
   const [locationError, setLocationError] = useState<string | null>(null);
   const [muted, setMuted] = useState(false);
 

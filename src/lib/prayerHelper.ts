@@ -2,20 +2,17 @@
 import * as adhan from "adhan";
 
 // Create a function to get correct North America parameters
-export function getNorthAmericaParams(): any {
-  // Access the adhan library directly to avoid TypeScript issues
-  // @ts-ignore - We need to bypass TypeScript checking here
-  const params = new adhan.CalculationParameters({
+export function getNorthAmericaParams(): adhan.CalculationParameters {
+  // Create parameters object
+  const params = {
     fajrAngle: 15,
     ishaAngle: 15,
     method: "NorthAmerica",
-  });
+    madhab: 1, // Shafi madhab (1)
+  };
 
-  // Set madhab to Shafi
-  // @ts-ignore
-  params.madhab = adhan.Madhab.Shafi;
-
-  return params;
+  // Return as CalculationParameters
+  return params as unknown as adhan.CalculationParameters;
 }
 
 // Helper function to calculate prayer times
